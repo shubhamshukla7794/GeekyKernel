@@ -1,0 +1,49 @@
+<div style="margin: 0;" class="container"
+	ng-Controller="c_jobController">
+	<br>
+	<div style="float: center;">
+		<div class="card"
+			style="width: 1337px; margin: 0; min-height: 300px; padding: 0px; border: 1px solid black;">
+			<h4 style="background-color: #66a3ff; padding: 10px;"
+				align="center" class="card-title">
+				<b>My Job Applications</b>
+			</h4>
+			<p align="center" style="padding: 0;">
+				<img class="card-img-top" src="JobPostings.png" alt="JobPostings"
+					style="width: 150px; height: 114px;">
+			</p>
+			<div class="card-body">
+				<table class="table table-bordered">
+					<thead style="background-color: #00cccc;">
+						<tr style="text-align: center;">
+							<th style="width: 7px;">Job ID</th>
+							<th style="width: 50px;">E-mail</th>
+							<th style="width: 80px;">Job Title</th>
+							<th style="width: 80px;">Job Description</th>
+							<th style="width: 30px;">Date</th>
+							<th style="width: 30px;">Status</th>
+						</tr>
+					</thead>
+					<tbody ng-repeat="job in jobapplications"
+						ng-show="CurrentUser.emailId == job.emailid">
+						<tr style="text-align: center;">
+							<td>{{job.jobid}}</td>
+							<td>{{job.emailid}}</td>
+							<td>{{job.jobtitle}}</td>
+							<td>{{job.jobdescription}}</td>
+							<td>{{job.applied_date}}</td>
+							<td ng-show="job.jobappstatus == 'N'">Pending</td>
+							<td ng-show="job.jobappstatus == 'A'">Approved</td>
+							<td ng-show="job.jobappstatus == 'R'">Rejected</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+
+
+
+</div>

@@ -1,0 +1,33 @@
+<div ng-Controller="c_blogController">
+<br>
+<div align="center">
+	<div class="card" style="width:700px;min-height:600px;padding:0px;border:0;">
+ 	 <h4 style="background-color:powderblue;padding:10px;" align="center" class="card-title"><b>Comments</b></h4><br>
+    	<div class="card-body">
+    
+   		<form>
+   			<div class="input-group mb-3">
+      			<div class="input-group-prepend">
+        		<span class="input-group-text"><i class="fa fa-sticky-note" style="font-size:20px"></i></span>
+      			</div>
+      			<textarea class="form-control" rows="2" ng-model="blogComment.commenttext" placeholder="Enter Comment here"></textarea>
+    		</div>
+    		
+    		<div align="center">
+    			<button type="submit" style="width:60%;line-height:80%;padding:10px;" ng-click="commentblog()" class="btn btn-primary">Comment</button>
+  			</div>
+  		</form>
+		<hr>
+		<div>
+				
+        		<div ng-repeat="comment in commentedData|orderBy:'comment.commentedDate':true">
+      				<span style="text-align:left;" class="form-control"><b>{{comment.loginname}}:</b>&nbsp;&nbsp;{{comment.commenttext}}<span style="float:right;" class="badge badge-light">{{comment.commentdate}}</span></span>
+					<br>				
+				</div>
+		</div>
+		
+		</div>
+	</div>
+</div>
+
+</div>

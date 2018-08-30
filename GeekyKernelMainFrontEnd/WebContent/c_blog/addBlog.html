@@ -1,0 +1,23 @@
+<br>
+<div class="container" ng-Controller="c_blogController">
+
+<div style="float:center;">
+	<div class="card" style="width:1100px;margin:0;min-height:300px;padding:0px;border:1px solid black;">
+	
+  <h2 style="background-color:#66a3ff;padding:10px;" align="center" class="card-title">
+  	<font face="Helvetica" ><strong>ADD BLOG</strong></font>
+  </h2>
+  <div style="text-align: left;" class="card-body">
+  <form>
+    <div class="form-group">
+      <label for="blogname">Blog Name:</label>
+      <input type="text" class="form-control" ng-model="blog.blogname" placeholder="Enter Blog Title" name="blogname">
+    </div>
+    <div class="form-group">
+      <label for="blogcontent">Blog Content:</label>
+      <textarea class="form-control" rows="9"  ng-model="blog.blogcontent" placeholder="Enter Blog Content"name="blogcontent"></textarea>
+    </div>
+    <button type="submit" ng-click="addBlog()" class="btn btn-primary btn-lg"><i class="fas fa-paper-plane"></i> SUBMIT BLOG</button>
+  </form>
+  
+</div></div></div></div>

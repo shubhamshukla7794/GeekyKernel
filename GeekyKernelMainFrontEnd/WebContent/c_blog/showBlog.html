@@ -1,0 +1,66 @@
+<br>
+<div class="container" ng-Controller="c_blogController">
+
+	<div style="float: center;">
+		<div class="card"
+			style="width: 1100px; margin: 0; min-height: 300px; padding: 0px; border: 1px solid black;">
+
+			
+			<h2 style="background-color:#66a3ff;padding:10px;" align="center" class="card-title">
+				<strong>All Blogs</strong>
+			</h2>
+			<br>
+			<div style="text-align: left;" class="card-body">
+			<p style="font-weight: bold; font-size: 20px; text-decoration: underline;"
+				ng-hide="CurrentUser == undefined">
+				Current User: {{CurrentUser.username}}</p>
+			<br>
+
+			<div ng-repeat="blog in allBlogData">
+
+			  <div ng-hide="((blog.status=='NA' || blog.status=='R') && (CurrentUser.roles=='ROLE_USER' || CurrentUser == undefined))">
+				<button type="button" style="width: 200px; border: 0;"
+						class="btn btn-default" data-toggle="collapse"
+						data-target="#{{blog.blogId}}">{{blog.blogname}}</button>
+				<button type="button" style="border: 0;width:12%" class="btn btn-info"
+						ng-click="incLike(blog.blogId)"><i class="fas fa-thumbs-up"></i>&nbsp;<span class="badge badge-light"> {{blog.likes}}</span> Likes</button>
+				<button type="button" style="border: 0;width:12%" class="btn btn-danger"
+						ng-click="incDisLike(blog.blogId)"><i class="fas fa-thumbs-down"></i>&nbsp;<span class="badge badge-light"> {{blog.dislikes}}</span> DisLikes</button>
+				<label style="font-weight: bold;"
+						ng-show="blog.status=='A' && CurrentUser.roles == 'ROLE_ADMIN'">Approved</label>
+				<label style="font-weight: bold;"
+						ng-show="blog.status=='R' && CurrentUser.roles == 'ROLE_ADMIN'">Rejected</label>
+				<label style="font-weight: bold;"
+						ng-show="blog.status=='NA' && CurrentUser.roles == 'ROLE_ADMIN'">Approval
+						Pending</label> <br>
+				<div id="{{blog.blogId}}" class="collapse">
+					<br> 
+					<input type="text" class="form-control" readonly rows="1" name="loginname" ng-model="blog.loginname"
+							placeholder="{{blog.loginname}}">
+					<textarea class="form-control" readonly rows="5"
+							name="blogcontent" ng-model="blog.blogcontent"
+							placeholder="{{blog.blogcontent}}"></textarea>
+						<br>
+						<button type="button" class="btn btn-primary" style="width:15%"
+							ng-show="CurrentUser.roles =='ROLE_ADMIN'  && blog.status=='NA'"
+							ng-click="approve(blog.blogId)"><i class="fas fa-check"></i> Approve</button>
+						<button type="button" class="btn btn-warning" style="width:15%"
+							ng-show="CurrentUser.roles =='ROLE_ADMIN'  && blog.status=='NA'"
+							ng-click="reject(blog.blogId)"><i class="fas fa-times"></i> Reject</button>
+						<button type="button" class="btn btn-danger" style="width:15%"
+							ng-show="CurrentUser.roles =='ROLE_ADMIN'"
+							ng-click="deleteblog(blog.blogId)"><i class="fas fa-trash"></i> Delete</button>
+						<button style="float: right;width:15%" class="btn btn-success"
+							ng-hide="CurrentUser == undefined"
+							ng-click="commentedblog(blog.blogId)"><i class="fas fa-comments"></i> Comment</button>
+
+					</div>
+					<br>
+					<br>
+					<hr>
+				</div></div>
+				</div>
+		</div>
+	</div>
+</div>
+<br>

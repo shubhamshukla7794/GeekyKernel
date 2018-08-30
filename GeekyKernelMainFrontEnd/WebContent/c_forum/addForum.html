@@ -1,0 +1,26 @@
+<br>
+<div class="container" ng-Controller="c_forumController">
+
+<div style="float:center;">
+	<div class="card" style="width:1100px;margin:0;min-height:300px;padding:0px;border:1px solid black;">
+
+	  <h2 style="background-color:#66a3ff;padding:10px;" align="center" class="card-title">
+	  	<font face="Helvetica" ><strong>Add Forum</strong></font>
+	  </h2>
+	  
+  	  <div style="text-align: left;" class="card-body">
+	  <form>
+	    <div class="form-group">
+	      <label for="forumname">Forum Name:</label>
+	      <input type="text" class="form-control" ng-model="forum.forumName" placeholder="Enter forum Title" name="forumName">
+	    </div>
+	    <div class="form-group">
+	      <label for="forumcontent">Forum Content:</label>
+	      <textarea class="form-control" rows="9"  ng-model="forum.forumContent" placeholder="Enter forum Content"name="forumContent"></textarea>
+	    </div>
+	    <button type="submit" ng-click="addForum()" class="btn btn-primary btn-lg" style="width:30%"><i class="fas fa-paper-plane"></i> SUBMIT FORUM</button>
+	  </form>
+	  </div>
+	</div>
+</div>
+</div>

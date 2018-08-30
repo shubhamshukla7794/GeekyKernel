@@ -1,0 +1,38 @@
+<br>
+<div style="border:1px solid black;padding:0;background-color:white;" class="container" ng-Controller="c_blogController">
+
+	<p align="center">
+	<h1 style="background-color:#66a3ff;padding:15px;text-align:center;margin-top:-16px;">
+		<strong>My Blogs</strong>
+	</h1>
+	</p>
+	
+<div align="center" ng-repeat="blog in allBlogData" ng-show="CurrentUser.loginname == blog.loginname">
+  <div class="card" style="width:80%;text-align:left;border:1px solid black;">
+  <div class="card-header">
+    <div style="font-size:20px;font-weight:bold;float:left;">{{blog.blogname}}</div>
+    <div style="font-size:15px;float:right;"><b>Author:</b> {{blog.createdate}}</div>
+  </div>
+    
+    <div class="card-body">{{blog.blogcontent}}</div> 
+    <div class="card-footer">
+    	<button class="btn btn-primary" ng-click="approveblog(blog.blogId)" 
+    			ng-show="blog.blogstatus=='NA' && CurrentUser.role=='ROLE_ADMIN'">Approve</button>
+        <button class="btn btn-info" ng-click="rejectblog(blog.blogId)" 
+        		ng-show="blog.blogstatus=='NA' && CurrentUser.role=='ROLE_ADMIN'">Reject</button>
+        <label style="font-weight:bold;" ng-show="blog.status=='A'">
+        	<span class="badge badge-pill badge-success">Approved</span></label>
+  		<label style="font-weight:bold;" ng-show="blog.status=='R'">
+  			<span class="badge badge-pill badge-danger">Rejected</span></label>
+  		<label style="font-weight:bold;" ng-show="blog.status=='NA'">
+  			<span class="badge badge-pill badge-warning">Pending</span></label>
+  		
+        <button style="float:right;width:15%" class="btn btn-danger" ng-click="deleteblog(blog.blogId)"><i class="fas fa-trash"></i> Delete</button><hr>
+        <button style="float:right;width:15%" ng-hide="blog.blogstatus == 'R'" class="btn btn-info" ng-click="commentedblog(blog.blogId)"><i class="fas fa-comments"></i> Comment</button>
+        <button style="float:right;width:15%" ng-hide="blog.blogstatus == 'R'" class="btn btn-success" ng-click="incLike(blog.blogId)"><i class="fas fa-thumbs-up"></i> <span class="badge badge-light">{{blog.likes}}</span>&nbsp;Like</button>
+        
+    </div>
+ 	</div>
+  <br><br>
+  </div>
+</div>

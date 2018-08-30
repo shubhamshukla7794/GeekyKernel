@@ -1,0 +1,38 @@
+<div style="margin:0;" class="container" ng-Controller="c_contactController">
+<br>
+<div style="float:center;">
+	<div class="card" style="width:1337px;margin:0;min-height:300px;padding:0px;border:1px solid black;">
+ 	 
+ 	 <h4 style="background-color:#66a3ff;padding:10px;" align="center" class="card-title">
+ 	 	<b>All Suggestions</b></h4>
+ 	 
+ 	 <p align="center" style="padding:0;">
+ 	 
+ 	 <img class="card-img-top" src="suggestion.jpg" alt="Card image" style="width:300px;height:132px;"></p>
+    	
+    	<div class="card-body">
+			<table class="table table-bordered">
+    			<thead style="background-color:#00cccc;">
+      			<tr style="text-align:center;">
+      				<th style="width:20px;">Name</th>
+      				<th style="width:20px;">E-mail</th>
+        			<th style="width:250px;">Suggestion</th>
+       				<th style="width:40px;">Date</th>
+        
+      			</tr>
+    			</thead>
+    			<tbody ng-repeat="suggest in allsuggestion">
+      			<tr style="text-align:center;">
+      				<td>{{suggest.name}}</td>
+      				<td>{{suggest.emailid}}</td>
+      				<td>{{suggest.message}}</td>
+      				<td>{{suggest.added_date}}</td>
+      			</tr>
+    			</tbody>
+			</table>
+		</div>
+	</div>
+  		 
+</div>
+
+</div>

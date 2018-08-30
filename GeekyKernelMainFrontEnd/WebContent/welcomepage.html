@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<title>Insert title here</title>
+</head>
+<body ng-app="myApp">
+
+<!-- Hello fellow geek {{CurrentUser.username}} -->
+<br>
+<div class="container" ng-Controller="c_userController">
+	<div>
+		<div class="card" style="width: 1100px; min-height: 500px; padding: 0px; border: 1px solid black;">
+			<h1 align="center" style="margin: 20px 0;">
+				<font face="Helvetica"><strong>PROFILE</strong></font>
+			</h1>
+			<div style="text-align: left;" class="card-body">
+				
+					<div style="margin-left: 30px; float: left; width: 30%; text-align: left;">
+						<div>
+							<label><i class="fas fa-camera-retro"></i><b> PROFILE PICTURE</b></label>
+						</div>
+						<div>
+							<img
+								src="http://localhost:8087/GeekyKernelMiddleware/profile/getProfilePicture/{{CurrentUser.loginname}}"
+								ng-hide="CurrentUser==undefined"
+								style="width: 120px; height: 140px; padding: 0; margin: 0;"
+								alt="user profile picture">
+						</div>
+					</div>
+					<div style="float: right; width: 50%; text-align: left;">
+						<div>
+							<label><i class="fas fa-user"></i><b> USER NAME :</b> {{CurrentUser.username}}</label>
+						</div>
+						<hr>
+						<div>
+							<label><i class="fas fa-id-badge"></i><b> PROFILE NAME :</b> {{CurrentUser.loginname}}</label>
+						</div>
+						<hr>
+						<div>
+							<label><i class="fas fa-envelope"></i><b> EMAIL :</b> {{CurrentUser.emailId}}</label>
+						</div>
+						<hr>
+						<div>
+							<label><i class="fas fa-mobile-alt"></i><b> MOBILE :</b> {{CurrentUser.mobile}}</label>
+						</div>
+						<hr>
+						<div>
+							<label><i class="fas fa-map-marker-alt"></i><b> ADDRESS :</b> {{CurrentUser.address}}</label>
+						</div>
+					</div>
+						
+					
+					
+					</div>
+		</div>
+	</div>
+</div>
+<br>
+
+</body>
+</html>

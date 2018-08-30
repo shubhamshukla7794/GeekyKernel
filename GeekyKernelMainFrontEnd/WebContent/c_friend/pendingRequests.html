@@ -1,0 +1,55 @@
+<div class="container" ng-Controller="c_friendController">
+
+	<div ng-hide="requestlistsize == undefined" align="center"
+		class="container">
+		<br>
+		<br>
+		<div class="card"
+			style="width: 600px; padding: 0; border: 1px solid black;">
+			<h4 class="card-title"
+				style="font-weight: bold; text-align: center; background-color:#66a3ff; padding: 15px;">Friend
+				Requests</h4>
+			<div ng-repeat="pending in pendingRequests" class="card-body">
+				<div ng-if="pending.loginname!=CurrentUser.loginname">
+					<div
+						style="margin-left: 30px; float: left; width: 40%; text-align: left;">
+						<p>
+							<img
+								src="http://localhost:8087/GeekyKernelMiddleware/profile/getProfilePicture/{{pending.loginname}}"
+								alt="image" width=90px height=100px>
+						</p>
+					</div>
+
+					<div style="float: right; width: 50%; text-align: left;">
+						<h5>{{pending.loginname}}</h5>
+						<br>
+						<button class="btn btn-primary" style="width:40%"
+							ng-click="acceptRequest(pending.friendid)">
+							<i class="fas fa-user-check"></i> Accept</button>
+						<button class="btn btn-danger" style="width:40%"
+							ng-click="deleteRequest(pending.friendid)">
+							<i class="fas fa-user-slash"></i> Reject</button>
+						<!-- <button class="btn btn-danger"
+							ng-click="deleteRequest(pending.friendid)">Delete</button> -->
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div align="center" ng-show="requestlistsize == undefined">
+		<br>
+		<br>
+		<div class="card"
+			style="width: 600px; padding: 0; border: 1px solid black;">
+			<h4 class="card-title"
+				style="font-weight: bold; text-align: center; background-color: powderblue; padding: 15px;">Friend
+				Requests</h4>
+			<div class="card-body">
+				<h5 align="center">No Friend Request !!!</h5>
+			</div>
+		</div>
+	</div>
+
+</div>

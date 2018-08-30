@@ -1,0 +1,41 @@
+<div class="container" ng-Controller="c_friendController">
+
+	<div align="center" class="container">
+		<br>
+		<br>
+		<div class="card"
+			style="width: 600px; padding: 0; border: 1px solid black;">
+			<h4 class="card-title"
+				style="font-weight: bold; text-align: center; background-color: #66a3ff; padding: 15px;">Friends</h4>
+			<div ng-repeat="friend in friends" class="card-body">
+				<div>
+					<div
+						style="margin-left: 30px; float: left; width: 50%; text-align: left;">
+						<p ng-hide="CurrentUser.loginname == friend.friendname">
+							<img
+								src="http://localhost:8087/GeekyKernelMiddleware/profile/getProfilePicture/{{friend.friendname}}"
+								alt="image" width=90px height=100px>
+						</p>
+						<p ng-hide="CurrentUser.loginname == friend.loginname">
+							<img
+								src="http://localhost:8087/GeekyKernelMiddleware/profile/getProfilePicture/{{friend.loginname}}"
+								alt="image" width=90px height=100px>
+						</p>
+					</div>
+
+					<div style="float: right; width: 40%; text-align: left;">
+						<h5 ng-hide="CurrentUser.loginname == friend.loginname">{{friend.loginname}}</h5>
+						<h5 ng-hide="CurrentUser.loginname == friend.friendname">{{friend.friendname}}</h5>
+						<button class="btn btn-danger" ng-click="unfriend(friend.friendid)">
+						<i class="fas fa-user-times"></i> Unfriend</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+</div>
+<br>

@@ -1,0 +1,49 @@
+<br>
+<div
+	style="border: 1px solid black; padding: 0; background-color: white;"
+	class="container" ng-Controller="c_jobController">
+
+	<p align="center">
+	<h1	style="background-color: #66a3ff; padding: 15px; text-align: center; margin-top: -16px;">
+	<strong>Current Jobs Openings</strong></h1>
+	</p>
+	<div align="center" ng-repeat="jobdetail in jobs">
+		<div class="card"
+			style="width: 80%; text-align: left; border: 1px solid black;">
+			<div class="card-header">
+				<div style="font-size: 20px; font-weight: bold; float: left;">{{jobdetail.designation}}</div>
+
+			</div>
+
+			<div class="card-body">
+				<p>
+					<b>Job Description: </b>{{jobdetail.designation}}
+				</p>
+				<p>
+					<b>Salary: </b>{{jobdetail.ctc}}
+				</p>
+				<p>
+					<b>Company: </b>{{jobdetail.company}}
+				</p>
+
+			</div>
+			<div class="card-footer">
+
+				<button type="button" class="btn btn-primary" style="width:20%"
+					ng-show="CurrentUser.roles=='ROLE_USER' "
+					ng-click="applyjobClicked(jobdetail.jobId)">
+					<i class="fas fa-check-square"></i> Apply</button>
+				<button type="button" class="btn btn-danger"
+					ng-click="deletejob(jobdetail.jobId)"
+					ng-show="CurrentUser.roles=='ROLE_ADMIN'"><i class="fas fa-trash"></i> Delete</button>
+				<!-- <button type="button" ng-show="CurrentUser.roles =='ROLE_ADMIN'"
+					class="btn btn-info" style="float: right;"
+					ng-click="updatejob(jobdetail.jobid)">Close</button> -->
+
+			</div>
+		</div>
+		<br>
+		<br>
+	</div>
+</div>
+ <br>

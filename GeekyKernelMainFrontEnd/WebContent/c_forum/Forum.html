@@ -1,0 +1,52 @@
+<div class="container" ng-Controller="c_forumController">
+
+<h2 align="center" style="margin:20px 0;background-color:#66a3ff;font-family:Helvetica"><strong>Forum Discussion</strong></h2><br>
+<p style="font-weight:bold;font-size:20px;text-decoration:underline;" ng-hide="CurrentUser == undefined">Current User: {{CurrentUser.loginname}}</p><br>
+
+<div ng-repeat="forum in allForumData">
+
+  <div class="container-fluid" ng-hide="((forum.status=='NA' || forum.status=='R') && (CurrentUser.roles=='ROLE_USER' || CurrentUser == undefined))">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row">
+		<div class="col-md-5">
+		    <div class="card">
+		    <div class="card-body">
+                
+              <h3 class="card-title">{{forum.forumName}}</h3>
+              
+              <span class="badge badge-success" ng-show="forum.status=='A'">Approved</span>
+              <span class="badge badge-danger"  ng-show="forum.status=='R'">Rejected</span>
+              <span class="badge badge-warning"  ng-show="forum.status=='NA'">Approval Pending</span>
+
+             <br><br>
+              
+  	<button type="button" class="btn btn-info" style="width:30%" ng-show="forum.status=='NA' && CurrentUser.roles=='ROLE_ADMIN'" ng-click="approveForum(forum.forumId)"><i class="fas fa-check"></i> Approve</button>
+  	<button type="button" class="btn btn-warning" style="width:30%" ng-show="forum.status=='NA' && CurrentUser.roles=='ROLE_ADMIN'" ng-click="rejectForum(forum.forumId)"><i class="fas fa-times"></i> Reject</button>
+  	<button type="button" class="btn btn-danger" style="width:30%" ng-show="CurrentUser.loginname == forum.loginname" ng-click="deleteForum(forum.forumId)"><i class="fas fa-trash"></i> Delete</button>
+  	         
+            </div>
+		</div>
+	    </div>
+	    
+	    <div class="col-md-7">
+		   <div class="card-body">
+			{{forum.forumContent}}
+			<hr>
+			<p>Written by : {{forum.loginname}}</p>
+           </div>
+		</div>
+		</div>
+        </div>
+        </div>
+</div>
+</div>
+  
+  
+  
+      <br><br>
+  
+  
+</div>
+</div>
