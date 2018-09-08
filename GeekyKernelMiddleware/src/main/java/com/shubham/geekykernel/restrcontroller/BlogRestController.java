@@ -197,10 +197,11 @@ public class BlogRestController
 	@PostMapping("blog/comment")
 	public ResponseEntity<Blogcomment> commentBlog(@RequestBody Blogcomment blogComment, HttpSession session) 
 	{
-		UserDetail userDetail = (UserDetail) session.getAttribute("userDetail");
+		/*UserDetail userDetail = (UserDetail) session.getAttribute("userDetail");*/
+		String loginname = (String) session.getAttribute("loginname");
 		int blogid = (Integer) session.getAttribute("blogidforcomment");
 
-		blogComment.setLoginname(userDetail.getLoginname());
+		blogComment.setLoginname(loginname);/*userDetail.getLoginname());*/
 		blogComment.setBlogid(blogid);
 		if (blogcommentDAO.addComment(blogComment)) 
 		{

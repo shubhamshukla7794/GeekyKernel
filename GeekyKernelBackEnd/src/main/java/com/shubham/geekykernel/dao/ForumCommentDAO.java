@@ -12,5 +12,6 @@ public interface ForumCommentDAO {
 	public boolean delete(ForumComment forumcomment);
 	public ForumComment get(int id);
 	public List<ForumComment> list();
+	public List<ForumComment> getAllForumComments(int forumid);
 
 }

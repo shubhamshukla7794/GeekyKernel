@@ -1,0 +1,33 @@
+<div ng-Controller="c_forumController">
+<br>
+<div align="center">
+	<div class="card" style="width:700px;min-height:600px;padding:0px;border:0;">
+ 	 <h4 style="background-color:#66a3ff;padding:10px;" align="center" class="card-title"><b>Discussions</b></h4><br>
+    	<div class="card-body">
+    
+   		<form>
+   			<div class="input-group mb-3">
+      			<div class="input-group-prepend">
+        		<span class="input-group-text"><i class="far fa-comments" style="font-size:20px"></i></span>
+      			</div>
+      			<textarea class="form-control" rows="2" ng-model="forumComment.discussiontxt" placeholder="Enter Comment here"></textarea>
+    		</div>
+    		
+    		<div align="center">
+    			<button type="submit" style="width:60%;line-height:80%;padding:10px;" ng-click="commentforum()" class="btn btn-primary">Comment</button>
+  			</div>
+  		</form>
+		<hr>
+		<div>
+				
+        		<div ng-repeat="forumcomment in forumcommentedData|orderBy:'-forumcomment.discussionDate':true">
+      				<span style="text-align:left;" class="form-control"><b>{{forumcomment.loginname}}:</b>&nbsp;&nbsp;{{forumcomment.discussiontxt}}<span style="float:right;" class="badge badge-light">{{forumcomment.discussionDate}}</span></span>
+					<br>				
+				</div>
+		</div>
+		
+		</div>
+	</div>
+</div>
+
+</div>

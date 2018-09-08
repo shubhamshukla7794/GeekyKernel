@@ -35,6 +35,11 @@
 			{{forum.forumContent}}
 			<hr>
 			<p>Written by : {{forum.loginname}}</p>
+			<hr ng-hide="CurrentUser == undefined">
+			<button style="float: right;width:30%" class="btn btn-success"
+							ng-hide="CurrentUser == undefined"
+							ng-click="commentedforum(forum.forumId)"><i class="fas fa-comments"></i> Comment</button>
+           <br><br>
            </div>
 		</div>
 		</div>

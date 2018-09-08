@@ -26,13 +26,19 @@
 						ng-click="incLike(blog.blogId)"><i class="fas fa-thumbs-up"></i>&nbsp;<span class="badge badge-light"> {{blog.likes}}</span> Likes</button>
 				<button type="button" style="border: 0;width:12%" class="btn btn-danger"
 						ng-click="incDisLike(blog.blogId)"><i class="fas fa-thumbs-down"></i>&nbsp;<span class="badge badge-light"> {{blog.dislikes}}</span> DisLikes</button>
-				<label style="font-weight: bold;"
+				<!-- <label style="font-weight: bold;color:green;"
 						ng-show="blog.status=='A' && CurrentUser.roles == 'ROLE_ADMIN'">Approved</label>
-				<label style="font-weight: bold;"
+				<label style="font-weight: bold;color:red;"
 						ng-show="blog.status=='R' && CurrentUser.roles == 'ROLE_ADMIN'">Rejected</label>
-				<label style="font-weight: bold;"
+				<label style="font-weight: bold;color:yellow;"
 						ng-show="blog.status=='NA' && CurrentUser.roles == 'ROLE_ADMIN'">Approval
-						Pending</label> <br>
+						Pending</label>  -->
+				
+				<span class="badge badge-success" ng-show="blog.status=='A'">Approved</span>
+              <span class="badge badge-danger"  ng-show="blog.status=='R'">Rejected</span>
+              <span class="badge badge-warning"  ng-show="blog.status=='NA'">Approval Pending</span>		
+						
+				<br>
 				<div id="{{blog.blogId}}" class="collapse">
 					<br> 
 					<input type="text" class="form-control" readonly rows="1" name="loginname" ng-model="blog.loginname"

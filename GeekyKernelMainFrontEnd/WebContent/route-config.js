@@ -11,13 +11,16 @@ myApp.config(
 				.when("/login",	{templateUrl : "c_user/login.html"})
 				.when("/loggedin",{templateUrl : "welcomepage.html"})
 				.when("/logout", {templateUrl : "LogoutConfirmation.html"})
-				
 				.when("/register",{templateUrl : "c_user/register.html"})
+				.when("/contactus",	{templateUrl : "c_contactUs/ContactUs.html"})
+				.when("/aboutus",	{templateUrl : "c_aboutUs/AboutUs.html"})
+				.when("/editprofile", {templateUrl : "c_user/editProfile.html"})
+				
 				.when("/addBlog",{templateUrl : "c_blog/addBlog.html"})
 				.when("/allBlog",{templateUrl : "c_blog/showBlog.html"})
 				.when("/myBlog", {templateUrl : "c_blog/myBlog.html"})
-				.when("/editprofile", {templateUrl : "c_user/editProfile.html"})
 				.when("/blogcomment", {templateUrl : "c_blog/blogcomment.html"})
+				
 				.when("/showfriends",{templateUrl : "c_friend/friends.html"})
 				.when("/friends",{templateUrl : "c_friend/friends.html"})
 				.when("/friendrequests",{templateUrl : "c_friend/pendingRequests.html"})
@@ -27,8 +30,8 @@ myApp.config(
 				.when("/myForum",{templateUrl : "c_forum/myForum.html"})
 				.when("/showForum",{templateUrl : "c_forum/myForum.html"})
 				.when("/allForum",{templateUrl : "c_forum/Forum.html"})
-				.when("/contactus",	{templateUrl : "c_contactUs/ContactUs.html"})
-				.when("/aboutus",	{templateUrl : "c_aboutUs/AboutUs.html"})
+				.when("/forumcomment",{templateUrl : "c_forum/forumcomment.html"})
+				
 				
 				.when("/applyjob",{templateUrl : "c_job/jobapplicationform.html"})
 				.when("/appliedjobs",{templateUrl : "c_job/appliedJobs.html"})

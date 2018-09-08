@@ -31,8 +31,8 @@ public class ForumCommentDAOTestCase
 		ForumComment forumComment = new ForumComment();
 		
 		forumComment.setForumid(3951);
-		forumComment.setLoginname("Scott");
-		forumComment.setDiscussiontxt("I am the first person to come back from Quantam Realm.");
+		forumComment.setLoginname("Peter");
+		forumComment.setDiscussiontxt("Intresting Mr. Stark.");
 		
 		assertTrue("Problem in Adding a Forum Comment",forumcommentDAO.save(forumComment));
 	}

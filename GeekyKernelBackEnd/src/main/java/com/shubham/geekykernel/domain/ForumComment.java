@@ -16,11 +16,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Component
 @Table
 @Entity
-@SequenceGenerator(name="forumcommentidseq",sequenceName="forumcommentidseq")
+@SequenceGenerator(name="blogcommentidseq",sequenceName="blogcommentidseq")
 public class ForumComment 
 {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="forumcommentidseq")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="blogcommentidseq")
 	private int commentid;
 	private int forumid;
 	private String discussiontext;

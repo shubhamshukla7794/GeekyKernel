@@ -3,6 +3,7 @@ package com.shubham.geekykernel.dao.impl;
 import java.sql.Date;
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,6 +80,23 @@ public class ForumCommentDAOImpl implements ForumCommentDAO{
 		
 		public List<ForumComment> list() {
 			return sessionFactory.getCurrentSession().createQuery("from ForumComment").list();
+		}
+		
+		public List<ForumComment> getAllForumComments(int forumid) 
+		{
+			try
+			{
+				Session session=sessionFactory.openSession();
+				Query query=session.createQuery("from ForumComment where forumid=:myforumid");
+				query.setParameter("myforumid",forumid);
+				List<ForumComment> listForumComments=query.list();
+				return listForumComments;
+			}
+			catch(Exception e)
+			{
+				System.out.println("Exception Arised:"+e);
+				return null;
+			}
 		}
 
 	}

@@ -15,8 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shubham.geekykernel.dao.ForumCommentDAO;
 import com.shubham.geekykernel.dao.ForumDAO;
 import com.shubham.geekykernel.domain.Forum;
+import com.shubham.geekykernel.domain.ForumComment;
+import com.shubham.geekykernel.domain.UserDetail;
 
 
 @RestController
@@ -24,6 +27,9 @@ public class ForumRestController
 {
 	@Autowired
 	private ForumDAO forumDAO;
+	
+	@Autowired
+	private ForumCommentDAO forumcommentDAO;
 	
 	@Autowired
 	HttpSession session;
@@ -98,7 +104,7 @@ public class ForumRestController
 	}
 	
 	@RequestMapping("/forum/get/{forumid}")
-	public ResponseEntity<Forum> getForum(@PathVariable int forumid)
+	public ResponseEntity<Forum> getForum(@PathVariable int forumid, HttpSession session)
 	{
 		Forum forum = forumDAO.getForum(forumid);
 		if(forum == null)
@@ -107,6 +113,7 @@ public class ForumRestController
 		}
 		else
 		{
+			session.setAttribute("forumidforcomment",forumid);
 			return new ResponseEntity<Forum>(forum, HttpStatus.OK);
 		}
 	}
@@ -146,4 +153,40 @@ public class ForumRestController
 	}
 	
 	
+	@RequestMapping("forum/listComments/{forumid}")
+	public ResponseEntity<List<ForumComment>> listForumComment(@PathVariable int forumid)
+	{
+		List<ForumComment> forumComments = forumcommentDAO.getAllForumComments(forumid);
+		if(forumComments.isEmpty())
+		{
+			return new ResponseEntity<List<ForumComment>>(forumComments,HttpStatus.NOT_FOUND); 
+		}
+		else
+		{
+			return new ResponseEntity<List<ForumComment>>(forumComments,HttpStatus.OK); 
+		}		
+	}
+	
+	@PostMapping("forum/comment")
+	public ResponseEntity<ForumComment> addComment(@RequestBody ForumComment forumcomment, HttpSession session)
+	{
+		String loginname = (String) session.getAttribute("loginname");
+		int forumid = (Integer) session.getAttribute("forumidforcomment");
+		
+		forumcomment.setLoginname(loginname);
+		forumcomment.setForumid(forumid);
+		
+		if(forumcommentDAO.save(forumcomment))
+		{
+			return new ResponseEntity<ForumComment>(forumcomment,HttpStatus.OK);
+		}
+		else
+		{
+			return new ResponseEntity<ForumComment>(forumcomment,HttpStatus.NOT_FOUND);
+		}
+	}
 }
+
+
+
+
