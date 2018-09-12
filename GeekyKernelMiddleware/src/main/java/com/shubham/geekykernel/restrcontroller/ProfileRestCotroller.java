@@ -46,7 +46,7 @@ public class ProfileRestCotroller
 			profile.setpicture(file.getBytes());
 			profilepictureDAO.uploadProfile(profile);
 			HttpHeaders headers = new HttpHeaders();
-			headers.setLocation(URI.create("http://localhost:8087/GeekyKernelMainFrontEnd/#/"));
+			headers.setLocation(URI.create("http://localhost:8087/GeekyKernelMainFrontEnd/#/loggedin"));
 			return new ResponseEntity<Void>(headers,HttpStatus.MOVED_PERMANENTLY);
 		}
 	}

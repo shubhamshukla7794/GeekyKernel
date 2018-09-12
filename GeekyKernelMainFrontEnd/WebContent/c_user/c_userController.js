@@ -18,6 +18,10 @@ myApp.controller("c_userController", function($scope, $http, $rootScope, $locati
 					console.log("login Successful: ");
 					
 					$location.path("/loggedin");
+				},
+				function(response)
+				{
+					alert("Please Enter Valid Credentials!!!")
 				});
 	}
 	
@@ -34,7 +38,7 @@ myApp.controller("c_userController", function($scope, $http, $rootScope, $locati
 				},
 				function(response)
 				{
-					alert("Please Enter Valid Data")
+					alert("Please Enter Valid Credentials as per the instructions!!!")
 				});
 }
 	

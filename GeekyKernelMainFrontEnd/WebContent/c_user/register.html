@@ -11,39 +11,50 @@
 
 		<div class="row">
 			<div class="col-sm-6 form-group">
-				<label>Login Name</label> <input type="text" name="loginname"
+				<label>Login Name</label> 
+				<span class="badge badge-info">Loginname should be alphanumeric between 3-20 and can also contain _ , -</span>
+				<input type="text" name="loginname"
 					ng-model="user.loginname" placeholder="Enter user Loginname Here"
 					class="form-control" required>
 			</div>
 
 			<div class="col-sm-6 form-group">
-				<label>Password</label> <input type="password" name="password"
+				<label>Password</label> 
+				<span class="badge badge-info">Password should be between 6-20</span>
+				<input type="password" name="password"
 					ng-model="user.password" placeholder="Enter Password Here"
 					class="form-control" required>
 			</div>
 		</div>
 		<div class="form-group">
-			<label>User Name</label> <input type="text" name="Username"
+			<label>User Name</label> 
+				<span class="badge badge-info">Only alphabets are allowed. The name should be between 3-50</span>
+				<input type="text" name="Username"
 				ng-model="user.username" placeholder="Enter User Name Here"
 				class="form-control" required>
 		</div>
 
 		<div class="row">
 			<div class="col-sm-6 form-group">
-				<label>EmailID</label> <input type="text" name="emailId"
+				<label>EmailID</label> 
+				<span class="badge badge-info">Always write in proper format</span>
+				<input type="email" name="emailId"
 					ng-model="user.emailId" placeholder="Enter EmailID Here"
 					class="form-control" required>
 			</div>
 
 			<div class="col-sm-6 form-group">
-				<label>Mobile Number</label> <input type="text" name="mobile"
+				<label>Mobile Number</label> 
+				<span class="badge badge-info">Only 10 digits are allowed.</span>
+				<input type="text" name="mobile"
 					ng-model="user.mobile" placeholder="Enter Mobile Number Here"
 					class="form-control" required>
 			</div>
 		</div>
 
 		<div class="form-group">
-			<label>Address</label>
+			<label>Address</label> 
+			<span class="badge badge-info">Address should only contain alphabets, numericals, and these(",()") special characters</span>	
 			<textarea name="address" ng-model="user.address"
 				placeholder="Enter Address Here" rows="2" class="form-control"></textarea>
 		</div>

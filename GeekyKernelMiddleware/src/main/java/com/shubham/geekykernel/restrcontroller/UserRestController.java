@@ -36,7 +36,7 @@ public class UserRestController
 	public ResponseEntity<UserDetail> checkLogin(@RequestBody UserDetail userDetail, HttpSession session)
 	{
 		UserDetail tempUserDetail = userDAO.checkUser(userDetail);
-		if (tempUserDetail != null)
+		/*if (tempUserDetail != null)
 		{
 			session.setAttribute("userDetail", tempUserDetail);
 			session.setAttribute("loginname", tempUserDetail.getLoginname());
@@ -46,6 +46,23 @@ public class UserRestController
 		else 
 		{
 			return new ResponseEntity<UserDetail>(tempUserDetail, HttpStatus.NOT_FOUND);
+		}*/
+		
+		try 
+		{
+			if (tempUserDetail != null)
+			{
+				session.setAttribute("userDetail", tempUserDetail);
+				session.setAttribute("loginname", tempUserDetail.getLoginname());
+				return new ResponseEntity<UserDetail>(tempUserDetail, HttpStatus.OK);
+
+			} 
+			
+		} catch (Exception e) 
+		{
+			e.printStackTrace();
+			return new ResponseEntity<UserDetail>(tempUserDetail, HttpStatus.NOT_FOUND);				
 		}
+	    return new ResponseEntity<UserDetail>(tempUserDetail, HttpStatus.OK);
 	}
 }

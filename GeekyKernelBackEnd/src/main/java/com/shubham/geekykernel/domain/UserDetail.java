@@ -3,7 +3,11 @@ package com.shubham.geekykernel.domain;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,13 +16,22 @@ import org.springframework.stereotype.Component;
 public class UserDetail {
 	
 	@Id
+	@Pattern(regexp = "^[a-zA-Z0-9_-]{3,20}$")
 	private String loginname;
+	@NotEmpty(message = "Please enter your password.")
+    @Size(min = 6, max = 15, message = "Your password must between 6 and 15 characters")
 	private String password;
+	@Pattern(regexp = "^[a-zA-Z ]{3,50}$")
 	private String Username;
+	@NotEmpty @Email
 	private String emailId;
+	@Pattern(regexp = "^(\\+\\d{1,2}[- ]?)?\\d{10}$")
 	private String mobile;
 	private String roles;
+	@Pattern(regexp = "^[a-zA-Z0-9-,() ]{3,250}$")
 	private String address;
+	
+	
 	public String getLoginname() {
 		return loginname;
 	}
@@ -60,8 +73,5 @@ public class UserDetail {
 	}
 	public void setAddress(String address) {
 		this.address = address;
-	}
-	
-	
-	
+	}	
 }
