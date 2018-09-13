@@ -28,11 +28,12 @@ In the project the validation were not present. Then I made following changes in
 ### BackEnd
  - **Changes in Model Class** 
 I added
-  -- javax.validation.constraints.Pattern    
-  -- javax.validation.constraints.Size    
-  -- org.hibernate.validator.constraints.Email    
-  -- org.hibernate.validator.constraints.NotEmpty
-The update UserDetail Model Class
+  javax.validation.constraints.Pattern    
+  javax.validation.constraints.Size    
+  org.hibernate.validator.constraints.Email    
+  org.hibernate.validator.constraints.NotEmpty
+
+*The update UserDetail Model Class*
 
 
         public class UserDetail 
@@ -42,7 +43,7 @@ The update UserDetail Model Class
         	private String loginname;
         	
         	@NotEmpty(message = "Please enter your password.")
-            @Size(min = 6, max = 15, message = "Your password must between 6 and 15 characters")
+           @Size(min = 6, max = 15, message = "Your password must between 6 and 15 characters")
         	private String password;
         	
         	@Pattern(regexp = "^[a-zA-Z ]{3,50}$")
@@ -64,20 +65,20 @@ The update UserDetail Model Class
     
   - **Changes in FrontEnd Controller**
     		
-    		$scope.register = function()
+    	$scope.register = function()
+    	{
+    	    console.log("register page");
+    	    $http.post('http://localhost:8087/GeekyKernelMiddleware/registerUser', $scope.user)
+    	    .then(function(response)
     		{
-    		  console.log("register page");
-    		  $http.post('http://localhost:8087/GeekyKernelMiddleware/registerUser', $scope.user)
-    		  .then(function(response)
-    				{
-    					console.log("registered successfully");
-    					alert("Registered Successfully")
-    					$location.path("/login");
-    				},
-    				function(response)
-    				{
-    					alert("Please Enter Valid Credentials as per the instructions!!!")
-    				});
-    		}
+    			console.log("registered successfully");
+    			alert("Registered Successfully")
+    			$location.path("/login");
+    		},
+    		function(response)
+    		{
+    			alert("Please Enter Valid Credentials as per the instructions!!!")
+    		});
+    	}
     
   
