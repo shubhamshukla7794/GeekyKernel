@@ -28,10 +28,10 @@ In the project the validation were not present. Then I made following changes in
 ### BackEnd
  - **Changes in Model Class** 
 I added
-  javax.validation.constraints.Pattern    
-  javax.validation.constraints.Size    
-  org.hibernate.validator.constraints.Email    
-  org.hibernate.validator.constraints.NotEmpty
+   *  javax.validation.constraints.Pattern    
+   *  javax.validation.constraints.Size    
+   * org.hibernate.validator.constraints.Email    
+   * org.hibernate.validator.constraints.NotEmpty
 
 *The update UserDetail Model Class*
 
@@ -43,7 +43,7 @@ I added
         	private String loginname;
         	
         	@NotEmpty(message = "Please enter your password.")
-           @Size(min = 6, max = 15, message = "Your password must between 6 and 15 characters")
+            @Size(min = 6, max = 15, message = "Your password must between 6 and 15 characters")
         	private String password;
         	
         	@Pattern(regexp = "^[a-zA-Z ]{3,50}$")
@@ -80,5 +80,7 @@ I added
     			alert("Please Enter Valid Credentials as per the instructions!!!")
     		});
     	}
-    
+   
+- **Output Images**
   
+![title](https://github.com/shubhamshukla7794/GeekyKernel/blob/master/ScreenShots/New%20Register%20Page.JPG)
